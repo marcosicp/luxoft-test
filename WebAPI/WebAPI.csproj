@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>9c6465da-8e8c-4d93-ae45-156c929f40fe</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\" />
+    <Folder Include="ClientApp\angularApp\src\app\components\" />
+    <Folder Include="Dictionaries\" />
+    <Folder Include="ClientApp\angularApp\src\app\components\users-add\" />
+    <Folder Include="ClientApp\angularApp\src\services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\angularApp\src\app\components\users-add\" />
+    <None Remove="ClientApp\angularApp\src\services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WebAPI.csproj" />
+  </ItemGroup>
+</Project>

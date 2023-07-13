@@ -1,0 +1,47 @@
+
+<div [formGroup]="userForm">
+    <div>
+        <div>
+            <label>First Name</label>
+            <input type="text" formControlName="firstName" />
+        </div>
+
+        <div>
+            <label>Last Name</label>
+            <input type="text" formControlName="lastName" />
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="email" formControlName="email" />
+        </div>
+
+        <!--CREATE IF STATEMENT TO CHECK AND PREVENT NULL VALUES-->
+        <div *ngIf="selectorType!">
+            <!--CREATE IF STATEMENT TO SEE TYPE OF SELECTOR (COULD BE A SWITCH BUT I DECIDE TO GO WITH AN IF STATEMENT)-->
+            <div *ngIf="selectorType.type == 0">
+                <label>IsAdmin:</label>
+                <select formControlName="isAdmin">
+                    <option *ngFor="let select of selectorType.selection | keyvalue"
+                            [ngValue]="select.value == 'No' ? false : true">
+                        {{select.value}}
+                    </option>
+                </select>
+            </div>
+
+            <div *ngIf="selectorType.type == 1">
+                <label>IsAdmin:</label>
+                <div *ngFor="let select of selectorType.selection | keyvalue">
+                    <input type="radio" [id]="select.value" name="isAdmin"
+                           formControlName="isAdmin"
+                           [value]="select.value == 'No' ? false : true">
+                    <label [for]="select.value">{{select.value}}</label><br>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <button (click)="addUser()">Add</button>
+
+
+</div>

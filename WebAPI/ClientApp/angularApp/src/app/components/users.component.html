@@ -1,0 +1,7 @@
+<!--ADDED UserAddComponent tag-->
+
+<!--ADDED implementation method of Emitter-->
+
+<app-users-list (emitDelete)="deleteUser($event)" [users]="users"></app-users-list>
+<hr>
+<app-users-add (emitAdd)="addUser($event)" [selectorType]="selectorType"></app-users-add>
